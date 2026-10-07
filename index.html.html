@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8f5f0">
+<title>Undangan Pernikahan — Nama Mempelai</title>
+<style>
+  :root{
+    --bg:#f8f5f0; --paper:#fffdf9; --ink:#292723; --muted:#777168;
+    --accent:#9b8064; --line:#ded6ca;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Georgia,"Edwardian Script ITC",serif;background:var(--bg);color:var(--ink);line-height:1.7}
+  button,a{font:inherit}
+  a{text-decoration:none;color:inherit}
+  .page{max-width:720px;margin:auto;background:var(--paper);min-height:100vh;box-shadow:0 0 35px #00000010}
+  section{padding:72px 28px}
+  .eyebrow{font:600 11px/1.2 Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+  h1,h2{font-weight:400}
+  h2{font-size:34px;line-height:1.2;margin-bottom:18px}
+  .center{text-align:center}
+  .hero{
+    min-height:100vh;display:flex;align-items:flex-end;justify-content:center;
+    padding:48px 26px 64px;position:relative;overflow:hidden;
+    background:
+      linear-gradient(180deg,#00000005 25%,#00000088 100%),
+      url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85") center/cover;
+    color:#fff;
+  }
+  .hero-content{text-align:center;width:100%;position:relative;z-index:1}
+  .hero .eyebrow{color:#fff}
+  .hero h1{font-size:clamp(48px,12vw,82px);line-height:.95;margin:8px 0 22px;font-style:italic}
+  .hero-date{font:600 12px Arial,sans-serif;letter-spacing:4px;text-transform:uppercase}
+  .open-btn{
+    margin-top:28px;border:1px solid #ffffffaa;background:#ffffff18;color:#fff;
+    padding:13px 25px;border-radius:999px;cursor:pointer;backdrop-filter:blur(8px)
+  }
+  .intro{background:var(--paper)}
+  .quote{font-style:italic;color:var(--muted);max-width:520px;margin:0 auto 30px}
+  .names{font-size:42px;font-style:italic;line-height:1.2;margin:24px 0}
+  .amp{color:var(--accent);font-size:25px;margin:0 9px}
+  .details{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:35px}
+  .card{border:1px solid var(--line);padding:22px 15px;border-radius:18px;background:#fff}
+  .card strong{display:block;font-size:15px;margin-bottom:5px}
+  .card span{font:12px/1.6 Arial,sans-serif;color:var(--muted)}
+  .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:28px 0}
+  .time{border:1px solid var(--line);border-radius:14px;padding:13px 4px}
+  .time b{display:block;font-size:25px;font-weight:400}
+  .time small{font:10px Arial,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+  .photo{
+    height:360px;border-radius:24px;background:url("https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1000&q=85") center/cover;
+    margin-bottom:30px
+  }
+  .timeline{border-left:1px solid var(--line);margin:35px auto 0;max-width:560px;text-align:left}
+  .event{position:relative;padding:0 0 28px 25px}
+  .event:before{content:"";position:absolute;left:-5px;top:7px;width:9px;height:9px;background:var(--accent);border-radius:50%}
+  .event time{font:11px Arial,sans-serif;letter-spacing:2px;color:var(--accent)}
+  .event h3{font-size:21px;font-weight:400;margin:4px 0}
+  .event p{font:13px/1.6 Arial,sans-serif;color:var(--muted)}
+  .map{
+    display:inline-block;margin-top:20px;background:var(--ink);color:#fff;padding:12px 22px;border-radius:999px;
+    font:600 12px Arial,sans-serif
+  }
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .gallery img{width:100%;height:190px;object-fit:cover;border-radius:18px}
+  .rsvp input,.rsvp textarea{
+    width:100%;border:1px solid var(--line);border-radius:12px;padding:13px;margin:7px 0;
+    background:#fff;font:14px Arial,sans-serif;outline:none
+  }
+  .rsvp textarea{min-height:100px;resize:vertical}
+  .send{border:0;background:var(--ink);color:#fff;padding:13px 24px;border-radius:999px;cursor:pointer;margin-top:7px}
+  footer{padding:45px 28px 60px;text-align:center;background:#f1ece4}
+  footer p{font:11px Arial,sans-serif;color:var(--muted)}
+  .music{
+    position:fixed;right:18px;bottom:18px;width:48px;height:48px;border:1px solid #ffffff55;
+    border-radius:50%;background:#292723;color:#fff;z-index:10;cursor:pointer;box-shadow:0 5px 20px #0002
+  }
+  .fade{opacity:0;transform:translateY(18px);transition:.8s ease}
+  .fade.show{opacity:1;transform:none}
+  @media(max-width:500px){
+    section{padding:60px 21px}
+    .details{grid-template-columns:1fr}
+    .photo{height:320px}
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">The Wedding Of</div>
+      <h1>Ayu &amp; Dirgantara</h1>
+      <div class="hero-date">02 • 01 • 2027</div>
+      <button class="open-btn" onclick="document.getElementById('undangan').scrollIntoView()">Open Invitation</button>
+    </div>
+  </header>
+
+  <main id="undangan">
+
+    <section class="intro center fade">
+      <div class="eyebrow">Assalamu'alaikum</div>
+      <p class="quote">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.</p>
+      <div class="names">Ayu <span class="amp">&amp;</span> Dirgantara</div>
+      <p style="color:var(--muted);font-size:14px">Saturday, 2 January 2027</p>
+
+      <div class="countdown" id="countdown">
+        <div class="time"><b id="days">00</b><small>Hari</small></div>
+        <div class="time"><b id="hours">00</b><small>Jam</small></div>
+        <div class="time"><b id="minutes">00</b><small>Menit</small></div>
+        <div class="time"><b id="seconds">00</b><small>Detik</small></div>
+      </div>
+    </section>
+
+    <section class="fade">
+      <div class="photo"></div>
+      <div class="center">
+        <div class="eyebrow">Save The Date</div>
+        <h2>Hari yang kami nantikan</h2>
+        <p style="color:var(--muted);max-width:530px;margin:auto;font-size:14px">
+          Kehadiran dan doa restu dari keluarga serta sahabat akan menjadi kebahagiaan yang tak ternilai bagi kami.
+        </p>
+      </div>
+    </section>
+
+    <section class="center fade" style="background:#f7f2eb">
+      <div class="eyebrow">Wedding Details</div>
+      <h2>Rangkaian Acara</h2>
+
+      <div class="timeline">
+        <div class="event">
+          <time>08.00 — 10.00 WIB</time>
+          <h3>Akad Nikah</h3>
+          <p>Saturday, 2 January 2027<br>Masjid Al-Hikmah</p>
+        </div>
+        <div class="event">
+          <time>11.00 — 14.00 WIB</time>
+          <h3>Resepsi</h3>
+          <p>Gedung Serbaguna Bahagia<br>Jl. Contoh No. 123, Bandung</p>
+        </div>
+      </div>
+
+      <a class="map" href="https://maps.google.com" target="_blank">Lihat Lokasi →</a>
+    </section>
+
+    <section class="fade">
+      <div class="center">
+        <div class="eyebrow">Our Moments</div>
+        <h2>Galeri</h2>
+      </div>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=700&q=80" alt="Foto 1">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=700&q=80" alt="Foto 2">
+        <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=700&q=80" alt="Foto 3">
+        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=700&q=80" alt="Foto 4">
+      </div>
+    </section>
+
+    <section class="rsvp fade" style="background:#f7f2eb">
+      <div class="center">
+        <div class="eyebrow">RSVP &amp; Wishes</div>
+        <h2>Doa &amp; Ucapan</h2>
+        <p style="color:var(--muted);font:13px Arial,Edwardian Script ITC;margin-bottom:18px">Tinggalkan doa terbaik untuk kami.</p>
+      </div>
+      <input id="guestName" placeholder="Nama">
+      <textarea id="guestMessage" placeholder="Tulis ucapan..."></textarea>
+      <button class="send" onclick="sendWish()">Kirim Ucapan</button>
+      <p id="wishResult" style="font:12px Edwardian Script ITC", cursive;color:var(--muted);margin-top:12px"></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="eyebrow">Thank You</div>
+    <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir.</p>
+    <p style="margin-top:20px">Ayu &amp; Dirgantara • 2026</p>
+  </footer>
+
+</div>
+
+<button class="music" id="musicBtn" onclick="toggleMusic()" aria-label="Putar musik">♫</button>
+<audio id="music" loop>
+  <!-- Ganti URL musik di bawah dengan file/URL musik yang kamu punya izin gunakan -->
+   <source src="musik/Risk It All - Bruno Mars.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // ==========================
+  // EDIT DATA UNDANGAN DI SINI
+  // ==========================
+  const weddingDate = new Date("2026-12-12T08:00:00+07:00");
+
+  function updateCountdown(){
+    const now = new Date();
+    const diff = weddingDate - now;
+    if(diff <= 0){
+      ["days","hours","minutes","seconds"].forEach(id => document.getElementById(id).textContent="00");
+      return;
+    }
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor(diff/3600000)%24;
+    const m = Math.floor(diff/60000)%60;
+    const s = Math.floor(diff/1000)%60;
+    document.getElementById("days").textContent=String(d).padStart(2,"0");
+    document.getElementById("hours").textContent=String(h).padStart(2,"0");
+    document.getElementById("minutes").textContent=String(m).padStart(2,"0");
+    document.getElementById("seconds").textContent=String(s).padStart(2,"0");
+  }
+  updateCountdown();
+  setInterval(updateCountdown,1000);
+
+  function toggleMusic(){
+    const audio=document.getElementById("music");
+    const btn=document.getElementById("musicBtn");
+    if(!audio.src || audio.querySelector("source").getAttribute("src")===""){
+      alert("Tambahkan URL/file musik pada bagian <audio> terlebih dahulu.");
+      return;
+    }
+    if(audio.paused){audio.play();btn.textContent="❚❚"}else{audio.pause();btn.textContent="♫"}
+  }
+
+  function sendWish(){
+    const name=document.getElementById("guestName").value.trim();
+    const msg=document.getElementById("guestMessage").value.trim();
+    document.getElementById("wishResult").textContent =
+      name && msg ? `Terima kasih, ${name}. Ucapanmu sudah ditulis 💛` : "Isi nama dan ucapan terlebih dahulu.";
+  }
+
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add("show")});
+  },{threshold:.12});
+  document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
